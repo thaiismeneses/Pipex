@@ -6,7 +6,7 @@
 /*   By: thafranco <thfranco@student.42.rio>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:10:26 by thafranco         #+#    #+#             */
-/*   Updated: 2024/01/29 22:10:29 by thafranco        ###   ########.fr       */
+/*   Updated: 2024/01/30 15:46:21 by thfranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	ft_exec(char *cmd, char **envp)
 		exit(0);
 	}
 }
-
-
 
 void	parent_process(char **av, int *p_fd, char **envp)
 {

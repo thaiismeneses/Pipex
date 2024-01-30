@@ -5,9 +5,9 @@ LIBFT_PATH = libft/
 LIB = $(LIBFT_PATH)libft.a
 
 SRCS = 	pipex.c \
-		ft_utils.c \
-		process.c \
-		main.c \
+	ft_utils.c \
+	process.c \
+
 
 OBJS = $(SRCS:.c=.o)
 
