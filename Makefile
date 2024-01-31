@@ -1,13 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: thafranco <thfranco@student.42.rio>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/31 16:54:23 by thafranco         #+#    #+#              #
+#    Updated: 2024/01/31 17:57:30 by thafranco        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = pipex
 
-LIBFT_PATH = libft/
-
-LIB = $(LIBFT_PATH)libft.a
-
 SRCS = 	pipex.c \
-	ft_utils.c \
-	process.c \
-
+		ft_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -17,30 +23,31 @@ RM = rm -f
 
 AR = ar rcs
 
-FILE = output
+INF				= infile
 
-CC_FLAGS = -Wall -Wextra -Werror
+OUTF			= outfile
 
-all: subsystem $(NAME)
+CC_FLAGS = -Wall -Wextra -Werror -g
 
-subsystem: 
-	make -C $(LIBFT_PATH) all
 
-$(NAME): $(OBJS)
-		$(CC) $(CC_FLAGS) $(OBJS) $(LIB) -o $(NAME)
+all:			$(NAME)
+
+$(NAME):		
+
+				@echo "---------- Compiling libft ----------\n"
+				@make -C libft
+				@$(CC) $(CFLAGS) $(SRCS) libft/libft.a -o $(NAME)
 
 clean:
-		make -C $(LIBFT_PATH) clean
-		$(RM) $(OBJS)
+				@make clean -C libft/
+				@ $(RM) $(OBJS)
 
-fclean: clean 
-		make -C $(LIBFT_PATH) fclean
-		$(RM) $(NAME)
+fclean:			clean
 
-re:	fclean all 
+				@echo "---------- Deleting Everything ----------\n"
+				@make fclean -C libft/
+				$(RM) $(NAME) 
 
-call: all clean
-		make -C $(LIB_PATH) fclean
-		[[ -f $(FILE) ]] && rm $(FILE) || true
+re:				fclean all 
 
-.PHONY: all clean fclean re call subsystem
+.PHONY:			all clean fclean re 
