@@ -6,7 +6,7 @@
 #    By: thafranco <thfranco@student.42.rio>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 16:54:23 by thafranco         #+#    #+#              #
-#    Updated: 2024/01/31 17:57:30 by thafranco        ###   ########.fr        #
+#    Updated: 2024/02/10 20:35:15 by thafranco        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ OUTF			= outfile
 
 CC_FLAGS = -Wall -Wextra -Werror -g
 
+LEAK = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 
 all:			$(NAME)
 
@@ -46,7 +47,12 @@ fclean:			clean
 
 				@echo "---------- Deleting Everything ----------\n"
 				@make fclean -C libft/
-				$(RM) $(NAME) 
+				$(RM) $(NAME) $(INF) $(OUTF)
+norma:	
+				norminette $(SRCS) ./libft
+
+valgrind:
+				$(LEAK) ./pipex ./infile "cat" "wc -l" ./outfile
 
 re:				fclean all 
 
