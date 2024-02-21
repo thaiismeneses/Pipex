@@ -36,7 +36,7 @@ What is Pipex?
 • Your program mustn’t have memory leaks.
 
 • If you have any doubt, handle the errors like the shell command:
-< file1 cmd1 | cmd2 > file2
+< cmd1 file1 | cmd2 > file2
 
 
 # 2. How to execute the program
@@ -51,11 +51,11 @@ $> ./bin/pipex ./infile "cat" "grep a" ./outfile
 $> ./bin/pipex ./infile "tr a X" "tr i o" ./outfile
 
 # Command by terminal
-$> < ./infile cat | wc -l > ./outfile
+$> < cat ./infile | wc -l > ./outfile
 
-$> < ./infile cat | grep a > ./outfile
+$> < cat ./infile | grep a > ./outfile
 
-$> < ./infile tr a X | tr i o > ./outfile
+$> < tr a X ./infile | tr i o > ./outfile
 
 ```
 
