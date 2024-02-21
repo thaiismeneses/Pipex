@@ -51,11 +51,11 @@ $> ./bin/pipex ./infile "cat" "grep a" ./outfile
 $> ./bin/pipex ./infile "tr a X" "tr i o" ./outfile
 
 # Command by terminal
-$> < cat ./infile | wc -l > ./outfile
+$> < ./infile cat | wc -l > ./outfile
 
-$> < cat ./infile | grep a > ./outfile
+$> < ./infile cat | grep a > ./outfile
 
-$> < tr a X ./infile | tr i o > ./outfile
+$> < ./infile tr a X | tr i o > ./outfile
 
 ```
 
