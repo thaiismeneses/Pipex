@@ -6,7 +6,7 @@
 /*   By: thafranco <thfranco@student.42.rio>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:10:46 by thafranco         #+#    #+#             */
-/*   Updated: 2024/02/10 20:37:18 by thafranco        ###   ########.fr       */
+/*   Updated: 2024/02/23 18:23:48 by thfranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_execute(char *av, char **envp)
 	char	*path;
 
 	cmd = ft_split(av, ' ');
+	if (!cmd)
+	{
+		ft_putstr_fd("pipex: command not exist. ", 2);
+		exit(1);
+	}
 	path = get_path(cmd[0], envp);
 	if (path == NULL)
 	{
@@ -87,6 +92,7 @@ int	main(int ac, char **av, char **envp)
 		parent_process(av, fd, envp);
 		close(fd[0]);
 		close(fd[1]);
+		waitpid(-1, NULL, 0);
 	}
 	else
 		ft_putstr_fd("Usage: ./pipex file1 \"cmd1\" \"cmd2\" file2\n ", 2);
