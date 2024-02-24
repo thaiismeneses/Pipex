@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thafranco <thfranco@student.42.rio>        +#+  +:+       +#+         #
+#    By: thfranco <thfranco@student.42.rio>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/31 16:54:23 by thafranco         #+#    #+#              #
-#    Updated: 2024/02/10 20:35:15 by thafranco        ###   ########.fr        #
+#    Created: 2024/01/31 16:54:23 by thfranco         #+#    #+#              #
+#    Updated: 2024/02/24 20:48:47 by thfranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,11 @@ fclean:			clean
 				@make fclean -C libft/
 				$(RM) $(NAME) $(INF) $(OUTF)
 norma:	
-				norminette $(SRCS) ./libft
+				norminette $(SRCS) pipex.h ./libft
 
-valgrind:
-				$(LEAK) ./pipex ./infile "cat" "wc -l" ./outfile
+leak:
+				$(LEAK) ./pipex infile "cat" "wc -l" outfile
 
 re:				fclean all 
 
-.PHONY:			all clean fclean re 
+.PHONY:			all clean fclean re leak 
